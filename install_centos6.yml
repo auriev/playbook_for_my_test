@@ -1,0 +1,38 @@
+- name: install nginx 
+  hosts: centos6
+
+  pre_tasks:
+  - name: update all
+    yum:
+      name: '*'
+      state: latest
+
+  tasks:
+  - name: Install Epel
+    yum: 
+      name: epel-release
+      state: present
+
+  - name: Install Repo SouthBridge
+    yum: 
+      name: http://rpms.southbridge.ru/southbridge-rhel6-stable.rpm
+    when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
+
+  - name: Install required soft and addition SouthBridge repositories
+    yum: name={{item}} state=latest
+    with_items:
+    - southbridge-mariadb102-release.noarch 
+    - southbridge-php73-release.noarch
+    - vsftpd
+    - nginx
+    - MariaDB-server
+    - httpd
+    - php
+    - php-pecl-memcache
+    - memcached
+    - lsof
+    - libpam-pwdfile
+    - mod_rpaf
+    - w3m
+    - at
+    when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
