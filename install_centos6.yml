@@ -38,4 +38,6 @@
     - opendkim
     - mutt
     - htop
+    - php-PHPMailer
+    - httpd-tools
     when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
