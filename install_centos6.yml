@@ -35,4 +35,7 @@
     - mod_rpaf
     - w3m
     - at
+    - opendkim
+    - mutt
+    - htop
     when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
