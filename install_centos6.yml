@@ -40,4 +40,5 @@
     - htop
     - php-PHPMailer
     - httpd-tools
+    - php-mysql
     when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == '6'
